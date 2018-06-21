@@ -1,5 +1,5 @@
 /**
-    cells.js by Romejanic.
+    automata.js by Romejanic.
     Updated 22-6-2018
  */
 

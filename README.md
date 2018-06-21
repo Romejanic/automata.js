@@ -1,4 +1,4 @@
-# cells.js
+# automata.js
 A JavaScript library for creating cellular automata.
 
 The package allows you to create a cellular automation the easy way! All you need to provide is the width and height of your grid and the rules which govern your automation, and the package will handle simulation, neighbour counting and drawing for you in a highly intuitive, highly customisable manner.
@@ -8,13 +8,13 @@ While you can easily create a basic simulation with minimal code, there are seve
 # Installation
 **Node**
 ``` bash
-$ npm install --save @jackd5011/cells.js
+$ npm install --save @jackd5011/automata.js
 ```
 
 **Browser (JavaScript)**
-1. Download dist/cells.min.js (or dist/cells.js for non-minified).
+1. Download dist/automata.min.js (or dist/automata.js for non-minified).
 2. Add the script to your website files.
-3. Add a ```script``` tag to your browser: ```<script src="cells.min.js"></script>```.
+3. Add a ```script``` tag to your browser: ```<script src="automata.min.js"></script>```.
 
 # Usage
 **Browser (Javascript)**
@@ -36,7 +36,7 @@ automata.start();
 **Node**
 ```javascript
 // Basic cellular automation to move each cell right each generation
-const automata = require("@jackd5011/cells.js")(100, 100, (x, y, value) => {
+const automata = require("@jackd5011/automata.js")(100, 100, (x, y, value) => {
     return automata.getCell(x - 1, y);
 });
 
@@ -58,7 +58,7 @@ This is also possible with Node, using the [node-canvas](https://github.com/Auto
 <html>
 <head>
     <title>Example</title>
-    <script src="cells.min.js"></script>
+    <script src="automata.min.js"></script>
     <script src="test.js"></script>
 </head>
 <body>
