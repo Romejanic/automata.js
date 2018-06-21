@@ -3,14 +3,12 @@
     Updated 21 - 6 - 2018
  */
 
- // Check the assert() function exists. If it doesn't, create our own.
-const globalScope = window || global;
-if(!globalScope.assert) {
-    globalScope.assert = function(condition, message) {
+if(typeof assert === "undefined") {
+    assert = function(condition, message) {
         if(!condition) {
-            throw message || "assert failed!";
+            throw "Assertation error: " + message;
         }
-    };
+    }
 }
 
 // define the Automata() constructor

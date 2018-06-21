@@ -1,3 +1,5 @@
 .DS_Store
 */.DS_Store
 node_modules/
+test/gol_gen_*.png
+test/node_test

@@ -53,7 +53,7 @@ window.addEventListener("load", () => {
     }, (x, y, value) => { // run for each cell each generation
         // implement the rules of Brian's Brain
         if(value == states["dead"]) { // the cell is currently dead
-            var neighbours = automata.countNeighbours(x, y); // get the neighbours
+            var neighbourCount = automata.countNeighbours(x, y); // get the neighbours
 
             if(neighbourCount == 2) {
                 return states["alive"]; // cell comes alive if exactly two neighbours are alive
