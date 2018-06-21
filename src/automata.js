@@ -44,6 +44,7 @@ const Automata = function(width, height, options, cellCallback) {
             // Callbacks
             onInitialGeneration: options.onInitialGeneration || undefined,
             onGenerationAdvance: options.onGenerationAdvance || undefined,
+            shouldCountNeighbour: options.shouldCountNeighbour || undefined
 
             // Rendering options
             canvas: options.canvas || undefined,
@@ -95,6 +96,23 @@ const Automata = function(width, height, options, cellCallback) {
                 }
             }
             return neighbourValues;
+        },
+
+        // Count the neighbours around a given cell.
+        // Based on Moore's neighbourhood, override the getNeighbours() function to change this.
+        countNeighbours: function(x, y) {
+            var neighbours = obj.getNeighbours(x, y); // get neighbour array
+            var n = 0; // neighbour count
+            neighbours.forEach((v) => { // loop through each neighbour
+                var flag = v; // is neighbour's value true?
+                if(obj.options.shouldCountNeighbour) {
+                    flag = obj.options.shouldCountNeighbour(v); // allow user to overwrite flag
+                }
+                if(flag) {
+                    n++; // if flag is true, increase neighbour count
+                }
+            });
+            return n;
         },
 
         // Advance the simulation by one generation
