@@ -5,7 +5,7 @@ var canvas = new Canvas(); // create the canvas
 const maxGenerations = 100; // how many generations will our simulation run for?
 
 // create the automation
-const automata = require("../src/automata.js")(100, 100, {
+const automata = require("automata.js")(100, 100, {
     canvas: canvas, // give our canvas
     autoTick: true, // start the simulation automatically
     onGenerationAdvance: function(n) {

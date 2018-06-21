@@ -68,17 +68,29 @@ This is also possible with Node, using the [node-canvas](https://github.com/Auto
 ```
 > test.js
 ```javascript
+// Called when the DOM finished loading
 document.addEventListener("load", () => {
+    // create a 100x100 automation
     var automata = Automata(100, 100, {
-        canvas: document.getElementById("c"),
-        autoTick: true,
+        canvas: document.getElementById("c"), // give the canvas
+        autoTick: true, // start automatically
         onInitialGeneration: function(cells) {
             for(var y = 0; y < cells.height; y++) {
-                cells.setCell(0, y, true);
+                cells.setCell(0, y, true); // make a vertical column of cells at x = 0
             }
         }
-    }, (x, y, value) => {
-        return automata.getCell(x - 1, y);
+    }, (x, y, value) => { // run for each cell each generation
+        return automata.getCell(x - 1, y); // move each cell right by 1
     });
 });
 ```
+
+# Examples
+
+All examples are available in the [test](https://github.com/Romejanic/automata.js/tree/master/test) folder.
+
+[Conway's Game of Life (HTML)](https://github.com/Romejanic/automata.js/blob/master/test/gol.js)
+
+[Brian's Brain (HTML)](https://github.com/Romejanic/automata.js/blob/master/test/briansbrain.js)
+
+[Conway's Game of Life (Node)](https://github.com/Romejanic/automata.js/blob/master/test/node_gol.js)
