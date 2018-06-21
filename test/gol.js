@@ -5,6 +5,13 @@ window.addEventListener("load", () => {
         canvas: document.getElementById("c"),
         onGenerationAdvance: function(generations) {
             document.getElementById("generations").innerText = String(generations);
+        },
+        onInitalGeneration: function(cells) {
+            for(var x = 0; x < automata.width; x++) {
+                for(var y = 0; y < automata.height; y++) {
+                    automata.setCell(x, y, Math.random() > 0.5);
+                }
+            }
         }
     }, (x, y, value) => {
         var neighbours = automata.getNeighbours(x, y);
@@ -23,12 +30,6 @@ window.addEventListener("load", () => {
             return true;
         } else {
             return value;
-        }
-    }, (automata) => {
-        for(var x = 0; x < automata.width; x++) {
-            for(var y = 0; y < automata.height; y++) {
-                automata.setCell(x, y, Math.random() > 0.5);
-            }
         }
     });
 });
