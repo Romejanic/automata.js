@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>automata.js test</title>
+    <title>Test: Conway's Game of Life</title>
     <script src="../src/automata.js"></script>
-    <script src="test.js"></script>
+    <script src="gol.js"></script>
     <style>
     canvas#c {
         border: 1px solid darkgray;
@@ -13,7 +13,8 @@
 <body>
     <canvas id="c"></canvas>
     <br>
-    Generations: <span id="generations"></span>
+    Generations: <span id="generations">0</span>
+    <br>
     <button onclick="start()">Start</button>
     <button onclick="stop()">Stop</button>
     <button onclick="automata.tick()">Step</button>

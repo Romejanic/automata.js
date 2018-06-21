@@ -21,8 +21,6 @@ window.addEventListener("load", () => {
         } else {
             return value;
         }
-
-        document.getElementById("generations").innerText = automata.generations;
     }, (automata) => {
         for(var x = 0; x < automata.width; x++) {
             for(var y = 0; y < automata.height; y++) {
@@ -37,4 +35,10 @@ function start() {
 }
 function stop() {
     automata.stop();
+}
+function step() {
+    automata.tick();
+}
+function reset() {
+    automata.reset();
 }

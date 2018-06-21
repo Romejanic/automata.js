@@ -1,3 +1,7 @@
+/**
+    automata.js by Romejanic
+ */
+
 const globalScope = window || global;
 if(!globalScope.assert) {
     globalScope.assert = function(condition, message) {
@@ -26,6 +30,7 @@ const Automata = function(width, height, options, cellCallback, initial) {
         options: {
             tickSpeed: options.tickSpeed || 40,
             autoTick: options.autoTick || false,
+            blankReset: options.blankReset || false,
 
             canvas: options.canvas || undefined,
             autoDraw: options.autoDraw || true,
@@ -89,12 +94,7 @@ const Automata = function(width, height, options, cellCallback, initial) {
                 var scl = obj.options.cellScale;
                 for(var x = 0; x < obj.width; x++) {
                     for(var y = 0; y < obj.height; y++) {
-                        //ctx.fillStyle = obj.options.getCellColor(obj.getCell(x, y), x, y) || obj.options.bgColor;
-                        if(obj.getCell(x, y)) {
-                            ctx.fillStyle = "#000000";
-                        } else {
-                            ctx.fillStyle = "#ffffff";
-                        }
+                        ctx.fillStyle = obj.options.getCellColor(obj.getCell(x, y), x, y) || obj.options.bgColor;
                         ctx.fillRect(x * scl, y * scl, scl, scl);
                     }
                 }
@@ -112,14 +112,30 @@ const Automata = function(width, height, options, cellCallback, initial) {
         },
 
         start: function() {
-            assert(!obj.cellTickInterval, "The automation is already started!");
+            assert(!obj.isRunning(), "The automation is already started!");
             obj.cellTickInterval = setInterval(obj.tick, (1/obj.options.tickSpeed) * 1000);
         },
 
         stop: function() {
-            assert(obj.cellTickInterval, "The automation is not started!");
+            assert(obj.isRunning(), "The automation is not started!");
             clearInterval(obj.cellTickInterval);
             delete obj.cellTickInterval;
+        },
+
+        isRunning: function() {
+            return obj.cellTickInterval;
+        },
+
+        reset: function() {
+            if(obj.isRunning()) {
+                obj.stop();
+            }
+            obj.generations = 0;
+            obj.cells = Array(obj.width * obj.height);
+            if(!obj.options.blankReset && initial) {
+                initial(obj);
+            }
+            obj.draw();
         }
     };
 
