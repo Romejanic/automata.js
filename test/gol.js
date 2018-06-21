@@ -6,10 +6,10 @@ window.addEventListener("load", () => {
         onGenerationAdvance: function(generations) {
             document.getElementById("generations").innerText = String(generations);
         },
-        onInitalGeneration: function(cells) {
-            for(var x = 0; x < automata.width; x++) {
-                for(var y = 0; y < automata.height; y++) {
-                    automata.setCell(x, y, Math.random() > 0.5);
+        onInitialGeneration: function(cells) {
+            for(var x = 0; x < cells.width; x++) {
+                for(var y = 0; y < cells.height; y++) {
+                    cells.setCell(x, y, Math.random() > 0.5);
                 }
             }
         }
