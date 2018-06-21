@@ -178,7 +178,7 @@ const Automata = function(width, height, options, cellCallback) {
             }
             obj.generations = 0; // Reset generation count
             obj.cells = Array(obj.width * obj.height); // Create new cell array
-            if(!obj.options.blankReset && initial) {
+            if(!obj.options.blankReset && obj.options.onInitialGeneration) {
                 obj.options.onInitialGeneration(obj); // Run the inital generation again (if desired)
             }
             obj.draw(); // Draw the board to update it
@@ -196,7 +196,7 @@ const Automata = function(width, height, options, cellCallback) {
         obj.start();
     }
     // Performs initial generation and drawing
-    if(initial) {
+    if(obj.options.onInitialGeneration) {
         obj.options.onInitialGeneration(obj);
         obj.draw();
     }
