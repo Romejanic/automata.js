@@ -1,14 +1,18 @@
 {
-    "name": "automata.js",
-    "version": "1.0",
+    "name": "cells.js",
+    "version": "1.0.0",
     "description": "A JavaScript library for creating cellular automata.",
     "author": {
-        "name": "Jack Davenport",
-        "url": "https://github.com/Romejanic/automata.js"
+        "name": "jackd5011",
+        "url": "https://www.npmjs.org/~jackd5011",
+        "email": "jack.davenport5011@gmail.com"
+    },
+    "scripts": {
+        "test": "node test/node_gol.js"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Romejanic/automata.js"
+        "url": "https://github.com/Romejanic/cells.js"
     },
-    "main": "src/automata.js"
+    "main": "src/cells.js"
 }
