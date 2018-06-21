@@ -83,25 +83,26 @@ const Automata = function(width, height, options, cellCallback) {
                 var ctx = obj.options.canvas.getContext("2d");
                 ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
+                var scl = obj.options.cellScale;
                 if(obj.options.gridLines.draw) {
                     ctx.fillStyle = obj.options.gridLines.color;
-                    for(var x = 0; x < obj.width; x += obj.options.gridLines.every) {
-                        ctx.fillRect(x * obj.options.cellScale, 0, 1, ctx.canvas.height);
+                    for(var x = 0; x < obj.width; x += obj.options.gridLines.every * scl) {
+                        ctx.fillRect(x * scl, 0, 1, ctx.canvas.height);
                     }
-                    for(var y = 0; y < obj.height; y += obj.options.gridLines.every) {
-                        ctx.fillRect(0, y * obj.options.cellScale, ctx.canvas.width, 1);
+                    for(var y = 0; y < obj.height; y += obj.options.gridLines.every * scl) {
+                        ctx.fillRect(0, y * scl, ctx.canvas.width, 1);
                     }
                 }
-            }
 
-            var scl = obj.options.cellScale;
-            for(var x = 0; x < obj.width; x++) {
-                for(var y = 0; y < obj.height; y++) {
-                    var cellStyle = obj.options.getCellColor(obj.getCell(x, y), x, y);
-                    if(!cellStyle) {
-                        cellStyle = obj.options.bgColor;
+                for(var x = 0; x < obj.width; x++) {
+                    for(var y = 0; y < obj.height; y++) {
+                        var cellStyle = obj.options.getCellColor(obj.getCell(x, y), x, y);
+                        if(!cellStyle) {
+                            cellStyle = obj.options.bgColor;
+                        }
+                        ctx.fillStyle = cellStyle;
+                        ctx.fillRect(x * scl, y * scl, scl, scl);
                     }
-                    ctx.fillRect(x * scl, y * scl, scl, scl);
                 }
             }
         },
