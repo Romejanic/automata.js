@@ -4,15 +4,30 @@ window.addEventListener("load", () => {
     automata = Automata(100, 100, {
         canvas: document.getElementById("c")
     }, (x, y, value) => {
-        if(automata.getCell(x - 1, y)) {
+        var neighbours = automata.getNeighbours(x, y);
+        var neighbourCount = 0;
+        neighbours.forEach((v) => {
+            if(v) {
+                neighbourCount++;
+            }
+        });
+
+        if(value && neighbourCount < 2) {
             return false;
-        } else if(automata.getCell(x + 1, y)) {
-            return Math.random() > 0.5;
-        } else {
+        } else if(value && neighbourCount > 3) {
+            return false;
+        } else if(!value && neighbourCount == 3) {
             return true;
+        } else {
+            return value;
         }
     });
-    automata.setCell(automata.width / 2, automata.height / 2, true);
+    
+    for(var i = 0; i < 1000; i++) {
+        var x = Math.floor(Math.random() * automata.width);
+        var y = Math.floor(Math.random() * automata.height);
+        automata.setCell(x, y, Math.random() > 0.5);
+    }
 });
 
 function start() {
