@@ -93,17 +93,23 @@ const Automata = function(width, height, options, cellCallback) {
         },
 
         start: function() {
-
+            assert(!obj.cellTickInterval, "The automation is already started!");
+            obj.cellTickInterval = setInterval(obj.tick, (1/obj.options.tickSpeed) * 1000);
         },
 
         stop: function() {
-            
+            asset(obj.cellTickInterval, "The automation is not started!");
+            clearInterval(obj.cellTickInterval);
+            delete obj.cellTickInterval;
         }
     };
 
     if(obj.options.canvas) {
         obj.options.canvas.width = obj.width * obj.options.cellScale;
         obj.options.canvas.height = obj.height * obj.options.cellScale;
+    }
+    if(obj.options.autoTick) {
+        obj.start();
     }
 
     return obj;
