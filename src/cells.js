@@ -1,6 +1,6 @@
 /**
-    automata.js by Romejanic.
-    Updated 21 - 6 - 2018
+    cells.js by Romejanic.
+    Updated 22-6-2018
  */
 
 if(typeof assert === "undefined") {

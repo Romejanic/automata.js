@@ -36,7 +36,7 @@ automata.start();
 **Node**
 ```javascript
 // Basic cellular automation to move each cell right each generation
-const automata = require("automata.js")(100, 100, (x, y, value) => {
+const automata = require("cells.js")(100, 100, (x, y, value) => {
     return automata.getCell(x - 1, y);
 });
 
@@ -58,7 +58,7 @@ This is also possible with Node, using the [node-canvas](https://github.com/Auto
 <html>
 <head>
     <title>Example</title>
-    <script src="automata.min.js"></script>
+    <script src="cells.min.js"></script>
     <script src="test.js"></script>
 </head>
 <body>
