@@ -16,7 +16,7 @@ const Automata = function(width, height, options, cellCallback) {
         options: {
             tickSpeed: options.tickSpeed || 40,
             autoTick: options.autoTick || false,
-            
+
             canvas: options.canvas || undefined,
             cellScale: options.cellScale || 5,
             bgColor: options.bgColor || "0xFFFFFF",
@@ -79,6 +79,25 @@ const Automata = function(width, height, options, cellCallback) {
                     }
                 }
             }
+
+            var scl = obj.options.cellScale;
+            for(var x = 0; x < obj.width; x++) {
+                for(var y = 0; y < obj.height; y++) {
+                    var cellStyle = obj.options.getCellColor(obj.getCell(x, y), x, y);
+                    if(!cellStyle) {
+                        cellStyle = obj.options.bgColor;
+                    }
+                    ctx.fillRect(x * scl, y * scl, scl, scl);
+                }
+            }
+        },
+
+        start: function() {
+
+        },
+
+        stop: function() {
+            
         }
     };
 
