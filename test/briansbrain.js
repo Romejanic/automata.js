@@ -10,7 +10,9 @@ var automata;
 const states = {
     "alive": 0,
     "dying": 1,
-    "dead":  2
+    "dead":  2,
+
+    length: 3 // number of states
 };
 
 window.addEventListener("load", () => {
