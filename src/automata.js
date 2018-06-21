@@ -7,7 +7,7 @@ if(!globalScope.assert) {
     };
 }
 
-const Automata = function(width, height, options, cellCallback) {
+const Automata = function(width, height, options, cellCallback, initial) {
     if(!cellCallback && typeof options == "function") {
         cellCallback = options;
         options = undefined;
@@ -20,6 +20,7 @@ const Automata = function(width, height, options, cellCallback) {
     const obj = {
         width: width,
         height: height,
+        generations: 0,
         cells: Array(width * height),
 
         options: {
@@ -67,13 +68,15 @@ const Automata = function(width, height, options, cellCallback) {
         },
 
         tick: function() {
+            obj.generations++;
             var newCells = Array(obj.width * obj.height);
             for(var x = 0; x < obj.width; x++) {
                 for(var y = 0; y < obj.height; y++) {
-                    obj.setCell(x, y, cellCallback(x, y, obj.getCell(x, y)));
+                    newCells[(y*obj.width)+x] = cellCallback(x, y, obj.getCell(x, y));
                 }
             }
             obj.cells = newCells;
+
             if(obj.options.autoDraw) {
                 obj.draw();
             }
@@ -127,6 +130,10 @@ const Automata = function(width, height, options, cellCallback) {
     }
     if(obj.options.autoTick) {
         obj.start();
+    }
+    if(initial) {
+        initial(obj);
+        obj.draw();
     }
 
     return obj;

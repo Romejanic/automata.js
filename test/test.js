@@ -21,13 +21,15 @@ window.addEventListener("load", () => {
         } else {
             return value;
         }
+
+        document.getElementById("generations").innerText = automata.generations;
+    }, (automata) => {
+        for(var x = 0; x < automata.width; x++) {
+            for(var y = 0; y < automata.height; y++) {
+                automata.setCell(x, y, Math.random() > 0.5);
+            }
+        }
     });
-    
-    for(var i = 0; i < 1000; i++) {
-        var x = Math.floor(Math.random() * automata.width);
-        var y = Math.floor(Math.random() * automata.height);
-        automata.setCell(x, y, Math.random() > 0.5);
-    }
 });
 
 function start() {
