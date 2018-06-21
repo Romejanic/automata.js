@@ -8,7 +8,7 @@ While you can easily create a basic simulation with minimal code, there are seve
 # Installation
 **Node**
 ``` bash
-$ npm install --save cells.js
+$ npm install --save @jackd5011/cells.js
 ```
 
 **Browser (JavaScript)**
@@ -36,7 +36,7 @@ automata.start();
 **Node**
 ```javascript
 // Basic cellular automation to move each cell right each generation
-const automata = require("cells.js")(100, 100, (x, y, value) => {
+const automata = require("@jackd5011/cells.js")(100, 100, (x, y, value) => {
     return automata.getCell(x - 1, y);
 });
 

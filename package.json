@@ -1,5 +1,5 @@
 {
-    "name": "cells.js",
+    "name": "@jackd5011/cells.js",
     "version": "1.0.0",
     "description": "A JavaScript library for creating cellular automata.",
     "author": {
