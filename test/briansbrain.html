@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test: Brian's Brain</title>
+    <script src="../src/automata.js"></script>
+    <script src="briansbrain.js"></script>
+    <style>
+    canvas#c {
+        border: 1px solid darkgray;
+    }
+    </style>
+</head>
+<body>
+    <canvas id="c"></canvas>
+    <br>
+    Generations: <span id="generations">0</span>
+    <br>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="step()">Step</button>
+    <button onclick="reset()">Reset</button>
+</body>
+</html>

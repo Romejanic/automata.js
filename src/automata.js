@@ -79,7 +79,8 @@ const Automata = function(width, height, options, cellCallback) {
             obj.cells[(y*obj.width)+x] = value;
         },
 
-        // Gets the value of all neighbours and stores them in an array
+        // Gets the value of all neighbours and stores them in an array.
+        // Implements the Moore's neighbourhood concept. Can be overriden to implement others manually.
         getNeighbours: function(x, y) {
             var neighbourValues = [];
             // Loop through each neighbour in a 3x3 grid around (x,y)
