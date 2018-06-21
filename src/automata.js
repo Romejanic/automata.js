@@ -1,3 +1,12 @@
+const globalScope = window || global;
+if(!globalScope.assert) {
+    globalScope.assert = function(condition, message) {
+        if(!condition) {
+            throw message || "assert failed!";
+        }
+    };
+}
+
 const Automata = function(width, height, options, cellCallback) {
     if(!cellCallback && typeof options == "function") {
         cellCallback = options;
@@ -6,7 +15,9 @@ const Automata = function(width, height, options, cellCallback) {
 
     assert(width, "You must provide a width!");
     assert(height, "You must provide a height!");
-    asserts(cellCallback, "You must provide a cell logic callback!");
+    assert(cellCallback, "You must provide a cell logic callback!");
+
+    console.log(width, height, options, cellCallback);
 
     const obj = {
         width: width,
@@ -18,6 +29,7 @@ const Automata = function(width, height, options, cellCallback) {
             autoTick: options.autoTick || false,
 
             canvas: options.canvas || undefined,
+            autoDraw: options.autoDraw || true,
             cellScale: options.cellScale || 5,
             bgColor: options.bgColor || "0xFFFFFF",
             getCellColor: options.getCellColor || function(cellValue, x, y) {
@@ -64,7 +76,11 @@ const Automata = function(width, height, options, cellCallback) {
                 }
             }
             obj.cells = newCells;
-
+            if(obj.options.autoDraw) {
+                obj.draw();
+            }
+        },
+        draw: function() {
             if(obj.options.canvas) {
                 var ctx = obj.options.canvas.getContext("2d");
                 ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -98,7 +114,7 @@ const Automata = function(width, height, options, cellCallback) {
         },
 
         stop: function() {
-            asset(obj.cellTickInterval, "The automation is not started!");
+            assert(obj.cellTickInterval, "The automation is not started!");
             clearInterval(obj.cellTickInterval);
             delete obj.cellTickInterval;
         }
@@ -107,6 +123,7 @@ const Automata = function(width, height, options, cellCallback) {
     if(obj.options.canvas) {
         obj.options.canvas.width = obj.width * obj.options.cellScale;
         obj.options.canvas.height = obj.height * obj.options.cellScale;
+        obj.draw();
     }
     if(obj.options.autoTick) {
         obj.start();
@@ -115,6 +132,6 @@ const Automata = function(width, height, options, cellCallback) {
     return obj;
 };
 
-if(module) {
+if(typeof module !== "undefined") {
     module.exports = Automata;
 }
