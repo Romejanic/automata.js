@@ -123,20 +123,20 @@ This class is constructed by the `Automata()` constructor which is defined/requi
 ## Options Object
 This object is passed into the `Automata()` constructor to change the settings and behaviour of the simulation. **NOT ALL FIELDS ARE REQUIRED**. The default values will be listed below.
 
-- ``tickSpeed``: How many generations are calculated each second (after calling `start()`). (Number, default 40).
-- ``autoTick``: If true, the simulation will begin running when the `Automata` object is constructed. (Boolean, default false).
-- ``blankReset``: If true, the inital generation code will not be run when the `reset()` function is called. (Boolean, default false).
-- ``onInitialGeneration()``: Called before the first generation is run. Populates the board with inital data. (Function, default undefined).
-- ``onGenerationAdvance(n)``: Called after a generation has been run. The number of generations (`n`) is given as a parameter. (Function, default undefined).
-- ``shouldCountNeighbour(value)``: Used by the ``countNeighbours`` function to determine if the given `value` should 'count' as a valid neighbour. If undefined, values which equate to true will be counted. (Function, default undefined).
-- ``canvas``: The canvas to draw the grid onto. If no canvas is provided, the grid will not be drawn at all. (HTMLCanvasElement / Canvas, default undefined).
-- ``autoDraw``: If true, the grid will be automatically drawn after each generation is calculated. (Boolean, default true).
-- ``cellScale``: How large (in pixels) each cell will appear on the canvas. Used to calculate the canvas size. (Number, default 5).
-- ``bgColor``: The style of the background if no cell is present. (String, default `"#FFFFFF"`).
-- ``getCellColor(value, x, y)``: Called for each cell, used to determine the style of each cell based on position and value. Return the style as a string, or `undefined` if the cell is 'dead' or inactive. By default, if a cell's value equates to ``true``, this function returns ``#000000``, otherwise it returns ``undefined``. (Function).
+- ``tickSpeed``: How many generations are calculated each second (after calling `start()`). **(Number, default 40)**.
+- ``autoTick``: If true, the simulation will begin running when the `Automata` object is constructed. **(Boolean, default false)**.
+- ``blankReset``: If true, the inital generation code will not be run when the `reset()` function is called. **(Boolean, default false)**.
+- ``onInitialGeneration()``: Called before the first generation is run. Populates the board with inital data. **(Function, default undefined)**.
+- ``onGenerationAdvance(n)``: Called after a generation has been run. The number of generations (`n`) is given as a parameter. **(Function, default undefined)**.
+- ``shouldCountNeighbour(value)``: Used by the ``countNeighbours`` function to determine if the given `value` should 'count' as a valid neighbour. If undefined, values which equate to true will be counted. **(Function, default undefined)**.
+- ``canvas``: The canvas to draw the grid onto. If no canvas is provided, the grid will not be drawn at all. **(HTMLCanvasElement / Canvas, default undefined)**.
+- ``autoDraw``: If true, the grid will be automatically drawn after each generation is calculated. **(Boolean, default true)**.
+- ``cellScale``: How large (in pixels) each cell will appear on the canvas. Used to calculate the canvas size. **(Number, default 5)**.
+- ``bgColor``: The style of the background if no cell is present. **(String, default `"#FFFFFF"`)**.
+- ``getCellColor(value, x, y)``: Called for each cell, used to determine the style of each cell based on position and value. Return the style as a string, or `undefined` if the cell is 'dead' or inactive. By default, if a cell's value equates to ``true``, this function returns ``#000000``, otherwise it returns ``undefined``. **(Function)**.
 - ``gridLines``: An object used to control the gridlines. See the settings below for information on how to use this.
-- ``gridLines.draw``: If true, gridlines will be drawn over the canvas. (Boolean, default true).
-- ``gridLines.every``: A grid line on each axis will be created for every ``gridLines.every``th cell. Can be used to create spacing between gridlines. (Number, default 1).
-- ``gridLines.color``: The style of the gridlines. (String, default ``"#808080"``)
+- ``gridLines.draw``: If true, gridlines will be drawn over the canvas. **(Boolean, default true)**.
+- ``gridLines.every``: A grid line on each axis will be created for every ``gridLines.every``th cell. Can be used to create spacing between gridlines. **(Number, default 1)**.
+- ``gridLines.color``: The style of the gridlines. **(String, default ``"#808080"``)**
 
 Please read [src/automata.js](https://github.com/Romejanic/automata.js/blob/master/src/automata.js) for more information.
