@@ -40,6 +40,9 @@ function stop() {
     automata.stop();
 }
 function step() {
+    if(automata.isRunning()) {
+        return;
+    }
     automata.tick();
 }
 function reset() {
