@@ -29,9 +29,9 @@ const Automata = function(width, height, options, cellCallback) {
             canvas: options.canvas || undefined,
             autoDraw: options.autoDraw || true,
             cellScale: options.cellScale || 5,
-            bgColor: options.bgColor || "0xFFFFFF",
+            bgColor: options.bgColor || "#FFFFFF",
             getCellColor: options.getCellColor || function(cellValue, x, y) {
-                return cellValue ? "0x000000" : undefined;
+                return cellValue ? "#000000" : undefined;
             },
             gridLines: {
                 draw: options.gridLines ? options.gridLines.draw : true,
@@ -86,7 +86,12 @@ const Automata = function(width, height, options, cellCallback) {
                 var scl = obj.options.cellScale;
                 for(var x = 0; x < obj.width; x++) {
                     for(var y = 0; y < obj.height; y++) {
-                        ctx.fillStyle = obj.options.getCellColor(obj.getCell(x, y), x, y) || obj.options.bgColor;
+                        //ctx.fillStyle = obj.options.getCellColor(obj.getCell(x, y), x, y) || obj.options.bgColor;
+                        if(obj.getCell(x, y)) {
+                            ctx.fillStyle = "#000000";
+                        } else {
+                            ctx.fillStyle = "#ffffff";
+                        }
                         ctx.fillRect(x * scl, y * scl, scl, scl);
                     }
                 }
