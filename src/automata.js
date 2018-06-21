@@ -185,7 +185,7 @@ const Automata = function(width, height, options, cellCallback) {
             // Make sure canvas is right size. If not, resize it
             var canvasW = obj.width * obj.options.cellScale;
             var canvasH = obj.height * obj.options.cellScale;
-            if(obj.canvas.width != canvasW || obj.canvas.height != canvasH) {
+            if(obj.options.canvas.width != canvasW || obj.options.canvas.height != canvasH) {
                 obj.options.canvas.width = obj.width * obj.options.cellScale;
                 obj.options.canvas.height = obj.height * obj.options.cellScale;
             }
