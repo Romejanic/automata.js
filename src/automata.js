@@ -64,6 +64,7 @@ const Automata = function(width, height, options, cellCallback) {
 
         // Gets the value of the cell at the coordinates
         getCell: function(x, y) {
+            // check the given coordinates are within range
             if(x < 0 || y < 0 || x >= obj.width || y >= obj.height) {
                 return 0;
             }
@@ -71,6 +72,7 @@ const Automata = function(width, height, options, cellCallback) {
         },
         // Sets the value of the cell at the coordinates
         setCell: function(x, y, value) {
+            // check the given coordinates are within range
             if(x < 0 || y < 0 || x >= obj.width || y >= obj.height) {
                 return 0;
             }
@@ -80,11 +82,14 @@ const Automata = function(width, height, options, cellCallback) {
         // Gets the value of all neighbours and stores them in an array
         getNeighbours: function(x, y) {
             var neighbourValues = [];
+            // Loop through each neighbour in a 3x3 grid around (x,y)
             for(var ox = -1; ox <= 1; ox++) {
                 for(var oy = -1; oy <= 1; oy++) {
                     if(ox == 0 && oy == 0) {
+                        // don't sample the cell itself!
                         continue;
                     }
+                    // add the cell value to the array
                     neighbourValues.push(obj.getCell(x + ox, y + oy));
                 }
             }
