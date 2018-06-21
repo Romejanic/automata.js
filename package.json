@@ -1,0 +1,13 @@
+{
+    "name": "automata.js",
+    "version": "0.0.1",
+    "description": "A JavaScript library for creating cellular automata.",
+    "author": {
+        "name": "Jack Davenport",
+        "url": "https://github.com/Romejanic/automata.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Romejanic/automata.js"
+    }
+}
