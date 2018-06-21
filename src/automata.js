@@ -31,6 +31,8 @@ const Automata = function(width, height, options, cellCallback, initial) {
             tickSpeed: options.tickSpeed || 40,
             autoTick: options.autoTick || false,
             blankReset: options.blankReset || false,
+            
+            onGenerationAdvance: options.onGenerationAdvance || undefined,
 
             canvas: options.canvas || undefined,
             autoDraw: options.autoDraw || true,
@@ -82,6 +84,9 @@ const Automata = function(width, height, options, cellCallback, initial) {
             }
             obj.cells = newCells;
 
+            if(obj.options.onGenerationAdvance) {
+                obj.options.onGenerationAdvance(obj.generations);
+            }
             if(obj.options.autoDraw) {
                 obj.draw();
             }

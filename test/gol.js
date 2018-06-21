@@ -2,7 +2,10 @@ var automata;
 
 window.addEventListener("load", () => {
     automata = Automata(100, 100, {
-        canvas: document.getElementById("c")
+        canvas: document.getElementById("c"),
+        onGenerationAdvance: function(generations) {
+            document.getElementById("generations").innerText = String(generations);
+        }
     }, (x, y, value) => {
         var neighbours = automata.getNeighbours(x, y);
         var neighbourCount = 0;
