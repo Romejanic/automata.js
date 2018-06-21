@@ -48,4 +48,5 @@ function step() {
 }
 function reset() {
     automata.reset();
+    document.getElementById("generations").innerText = "0";
 }
