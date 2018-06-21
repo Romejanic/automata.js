@@ -17,8 +17,6 @@ const Automata = function(width, height, options, cellCallback) {
     assert(height, "You must provide a height!");
     assert(cellCallback, "You must provide a cell logic callback!");
 
-    console.log(width, height, options, cellCallback);
-
     const obj = {
         width: width,
         height: height,
