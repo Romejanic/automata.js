@@ -44,7 +44,7 @@ const Automata = function(width, height, options, cellCallback) {
             // Callbacks
             onInitialGeneration: options.onInitialGeneration || undefined,
             onGenerationAdvance: options.onGenerationAdvance || undefined,
-            shouldCountNeighbour: options.shouldCountNeighbour || undefined
+            shouldCountNeighbour: options.shouldCountNeighbour || undefined,
 
             // Rendering options
             canvas: options.canvas || undefined,

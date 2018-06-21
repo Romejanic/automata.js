@@ -27,7 +27,7 @@ window.addEventListener("load", () => {
             // loops through entire cells
             for(var x = 0; x < cells.width; x++) {
                 for(var y = 0; y < cells.height; y++) {
-                    // randomly set cells to 'alive'
+                    // set each cell to random state
                     cells.setCell(x, y, Math.floor(Math.random() * states.length));
                 }
             }
@@ -44,17 +44,16 @@ window.addEventListener("load", () => {
                 default:
                     return undefined; // dead cells will be bgColor
             }
+        },
+
+        // only count neighbours if they are 'alive'
+        shouldCountNeighbour: function(value) {
+            return value == states["alive"];
         }
     }, (x, y, value) => { // run for each cell each generation
         // implement the rules of Brian's Brain
         if(value == states["dead"]) { // the cell is currently dead
-            var neighbours = automata.getNeighbours(x, y); // get the neighbours
-            var neighbourCount = 0;
-            neighbours.forEach((v) => {
-                if(v == states["alive"]) {
-                    neighbourCount++; // count the neighbours with the 'alive' state
-                }
-            });
+            var neighbours = automata.countNeighbours(x, y); // get the neighbours
 
             if(neighbourCount == 2) {
                 return states["alive"]; // cell comes alive if exactly two neighbours are alive

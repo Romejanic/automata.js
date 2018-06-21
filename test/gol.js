@@ -24,13 +24,7 @@ window.addEventListener("load", () => {
             }
         }
     }, (x, y, value) => { // run for each cell each generation
-        var neighbours = automata.getNeighbours(x, y); // get the neighbours
-        var neighbourCount = 0;
-        neighbours.forEach((v) => {
-            if(v) {
-                neighbourCount++; // count the live neighbours
-            }
-        });
+        var neighbourCount = automata.countNeighbours(x, y); // get number of live neighbours
 
         // implement the rules of Conway's GOL
         if(value && neighbourCount < 2) {
